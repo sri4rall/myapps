@@ -1,0 +1,100 @@
+<core:View xmlns:core="sap.ui.core"
+           xmlns:mvc="sap.ui.core.mvc" 
+           xmlns="sap.m"
+           	xmlns:form="sap.ui.layout.form" 
+		   controllerName="MyApp.demo.view.Item" 
+		   xmlns:html="http://www.w3.org/1999/xhtml">
+<Page
+		title="{/i18n>DetailTitle}"
+		class="sapUiFioriObjectPage"
+		showNavButton="{device>/isPhone}" 
+		navButtonPress="handleNavButtonPress"> 
+
+		
+<!-- 		<VBox>
+			<Text text="{SoId}" />
+			<Text text="{GrossAmount}" />
+			<Text text="{CreatedAt}" />
+			<Text text="{CreatedByBp}" />
+		</VBox>  -->
+<ObjectHeader title="{SoId}" number="{GrossAmount}" numberUnit="{CurrencyCode}">
+  <attributes>
+   <ObjectAttribute text="{BuyerName}" />
+   <ObjectAttribute text="{CreatedByBp}" />
+   <ObjectAttribute text="{
+                   path:'CreatedAt',
+                   formatter:'MyApp.demo.Formatter.Formatter.date'
+                   }" />
+</attributes>
+
+<firstStatus>
+<ObjectStatus text = "{
+                     path:'LifecycleStatus',
+                     formatter:'MyApp.demo.Formatter.Formatter.statusText'
+                     }"
+              state = "{
+                      path:'LifecycleStatus',
+                     formatter:'MyApp.demo.Formatter.Formatter.statusState'
+                     }" />
+</firstStatus>
+</ObjectHeader>		
+<IconTabBar expanded="{device>/isNoPhone}" > 
+      <items> 	
+          <IconTabFilter icon="sap-icon://supplier"> 
+            <form:SimpleForm id="SupplierForm" minWidth="1024" > 
+                 <core:Title text="Address" /> 
+                 <Label text="Name"/> 
+                 <Text  text="{CompanyName}" /> 
+                 <Label text="City"/> 
+                 <Text  text="{City}, {PostalCode}" /> 
+                 <Label text="Street"/> 
+                 <Text  text="{Street}" /> 
+             </form:SimpleForm> 
+          </IconTabFilter> 
+       </items> 
+</IconTabBar> 	
+
+<Table id="iditem" headerText="{i18n>LineItemTableHeader}" items="{LineItems}" > 
+    <columns> 
+       <Column> 
+         <header><Label text="Product" /> </header> 
+       </Column> 
+       <Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center" > 
+         <header> <Label text="Delivery Date"/> </header>
+       </Column> 
+       <Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center" > 
+         <header> <Label text="Quantity" /></header>
+       </Column> 
+       <Column hAlign="Right" > 
+         <header><Label text="Price" /></header>
+       </Column> </columns> 
+         <ColumnListItem id="cells" type="Navigation" press="handleLineItemPress" > 
+          <cells> 
+             <ObjectIdentifier title="{ProductId}" />
+             <Text text="{
+                      path:'DeliveryDate',
+                      formatter:'MyApp.demo.Formatter.Formatter.date'
+                           }"/>
+             <Text text="{
+                      path:'Quantity',
+                      formatter:'MyApp.demo.Formatter.Formatter.quantity'
+                           }"/> 
+             <ObjectNumber number="{GrossAmount}" numberUnit="{CurrencyCode}" />
+          </cells> 
+        </ColumnListItem> 
+</Table> 
+
+
+
+
+	
+<footer> 
+    <Bar>
+      <contentRight> 
+        <Button	text="{i18n>ApproveButtonText}" type="Accept" icon="sap-icon://accept" press="handleApprove" /> 
+      </contentRight>
+    </Bar> 
+</footer>
+	
+	</Page>
+</core:View>

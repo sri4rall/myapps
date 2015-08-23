@@ -1,0 +1,89 @@
+<core:View 
+xmlns:core="sap.ui.core" 
+xmlns:mvc="sap.ui.core.mvc" 
+xmlns="sap.m"
+xmlns:l="sap.ui.layout"
+xmlns:f="sap.ui.layout.form"
+controllerName="MyApp.demo.view.Header" 
+xmlns:html="http://www.w3.org/1999/xhtml">
+<Page>	
+<content>
+	
+<IconTabBar
+				expanded="{device>/isNoPhone}"
+				class="sapUiResponsiveContentPadding">	
+	
+				<items> 
+					<IconTabFilter
+						text="Info">
+						<f:SimpleForm
+							minWidth="1024"
+							maxContainerCols="2"
+							layout="ResponsiveGridLayout" >
+							<f:title>
+								<core:Title text="A Form" />
+							</f:title>
+							<Label text="Label"/>
+							<Text text="Value"/>
+						</f:SimpleForm>
+					</IconTabFilter>
+					<IconTabFilter
+						text="Attachments">
+						<List headerText="A List" showSeparators="Inner" >
+						</List>
+					</IconTabFilter> 
+					<IconTabFilter
+						text="Notes">
+						<FeedInput />
+					</IconTabFilter>
+				</items>
+			</IconTabBar>
+
+
+
+<Table id="idProdTable"
+       items="{/SalesOrderCollection}">       
+
+
+<headerToolbar>
+<Toolbar>
+<Title text="{i18n>SoHeaderItem}" level="H2" />
+</Toolbar>
+</headerToolbar>
+
+<columns>
+<Column width="12em"> <Text text="{i18n>SO}" /> </Column>
+
+<Column minScreenWidth="Tablet" demandPopin="false" > <Text text="{i18n>BuyerName}" />  </Column>
+
+<Column minScreenWidth="Tablet" demandPopin="false"> <Text text="{i18n>Status}" />      </Column>
+
+<Column> <Text text="Gross Amount"/>  </Column>
+
+<Column> <Text text="Tax Amount" />   </Column>
+</columns>
+
+<items>
+<ColumnListItem>
+<cells>
+<ObjectIdentifier title="{SoId}" titlePress="items"  titleActive="true" />
+<Text text="{BuyerName}" />
+<ObjectStatus text="{path:'LifecycleStatus',
+             formatter:'MyApp.demo.Formatter.Formatter.statusText'
+            }"
+      state = "{ path:'LifecycleStatus',
+                 formatter:'MyApp.demo.Formatter.Formatter.statusState'
+               }" />
+ <ObjectNumber number="{GrossAmount}" numberUnit="{CurrencyCode}" />                    
+ <ObjectNumber number="{TaxAmount}" numberUnit="{CurrencyCode}" />
+
+
+
+</cells>
+</ColumnListItem>
+</items>
+
+</Table>	
+</content>
+	</Page>	
+</core:View>
