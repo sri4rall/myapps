@@ -1,0 +1,39 @@
+.header {
+  display: block;
+  width: 500px;
+  padding: 15px;
+  margin: 15px auto;
+  background-color:rgba(63,166,149,1);
+  box-shadow: 2px 3px 3px 0 rgba(63,31,0,.5);
+  border-radius: 10px; 
+  text-align: center;
+  text-decoration: none;
+  }
+
+.link {
+   display: block;
+     width: 150px;
+   padding: 15px;
+    margin: 15px auto;
+background: white;
+box-shadow: 0 0 5px 0 rgba(63,31,0,.5);
+border-radius: 10px;
+   text-align: center;
+xt-decoration: none;
+-webkit-transition: .2s;
+        transition: .2s;
+      }
+.link:hover {
+             -webkit-transform: rotate(0deg) scale(1); 
+              transform: rotate(0deg) scale(1);
+       }
+
+.pquote {
+       float: left;
+       width: 100px;
+      background: #ddf;
+     font-weight: bold;
+         padding: 13px;
+          margin: 0 13px 13px 0;
+   border-radius: 5px;
+              }
